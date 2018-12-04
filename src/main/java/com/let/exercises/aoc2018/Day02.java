@@ -25,18 +25,20 @@ public class Day02 {
 
 				int countOccur = StringUtils.countOccurrencesOf(temp, arr2[j]);
 
-				if (countOccur == 0) continue;
+				if (countOccur == 0)
+					continue;
 
 				if (countOccur % 3 == 0 && temp3 == 0) {
 					count3++;
 					temp3 = 1;
 				}
-				else if (countOccur % 2 == 0  && temp2 == 0) {
+				else if (countOccur % 2 == 0 && temp2 == 0) {
 					count2++;
 					temp2 = 1;
 				}
 
-				if (temp2 == 1 && temp3 == 1) break;
+				if (temp2 == 1 && temp3 == 1)
+					break;
 
 				temp = temp.replaceAll(arr2[j], "");
 
@@ -67,11 +69,11 @@ public class Day02 {
 		System.out.println(id.replace(String.valueOf(id.charAt(diffPos)), ""));
 	}
 
-	private int getDiffPos(String str1, String str2){
+	private int getDiffPos(String str1, String str2) {
 		int countdiff = 0;
 		int diffPos = -1;
-		for (int i = 0; i < str1.length(); i++){
-			if (str1.charAt(i) != str2.charAt(i)){
+		for (int i = 0; i < str1.length(); i++) {
+			if (str1.charAt(i) != str2.charAt(i)) {
 				countdiff++;
 				diffPos = i;
 			}

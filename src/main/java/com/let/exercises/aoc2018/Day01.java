@@ -13,7 +13,7 @@ public class Day01 {
 		String[] arr = file.split("\r\n");
 
 		int sum = 0;
-		for (int i = 0; i < arr.length; i++){
+		for (int i = 0; i < arr.length; i++) {
 			sum += Integer.valueOf(arr[i]);
 		}
 		System.out.println(sum);
@@ -28,16 +28,17 @@ public class Day01 {
 
 		int sum = 0;
 		do {
-			for (int i = 0; i < arr.length; i++){
+			for (int i = 0; i < arr.length; i++) {
 				sum += Integer.valueOf(arr[i]);
 
-				if (counter.contains(sum)){
+				if (counter.contains(sum)) {
 					System.out.println(sum);
 					return;
 				}
 				counter.add(sum);
 			}
-		} while (true);
+		}
+		while (true);
 
 	}
 

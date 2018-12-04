@@ -48,12 +48,10 @@ public class Day03 {
 
 		Collection<String> allKeys = allPairs.keySet();
 
-		Map<Boolean, List<String>> partitionedIds = allKeys.stream()
-				.collect(partitioningBy(overlaps::contains));
+		Map<Boolean, List<String>> partitionedIds = allKeys.stream().collect(partitioningBy(overlaps::contains));
 
 		List<String> overlappingIds = partitionedIds.get(true);
 		List<String> missingIds = partitionedIds.get(false);
-
 
 		System.out.println(overlappingIds.size());
 		System.out.println(missingIds.size());
