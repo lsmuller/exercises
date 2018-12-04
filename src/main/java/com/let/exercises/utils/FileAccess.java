@@ -6,8 +6,8 @@ import org.apache.commons.io.IOUtils;
 
 public class FileAccess {
 
-	public static String loadFile(ClassLoader classLoader, String file) throws IOException {
-		InputStream stream = classLoader.getResourceAsStream(file);
+	public static String loadFile(ClassLoader classLoader, String path) throws IOException {
+		InputStream stream = classLoader.getResourceAsStream(path);
 
 		String var3;
 		try {
@@ -17,5 +17,10 @@ public class FileAccess {
 		}
 
 		return var3;
+	}
+
+	public static String[] loadFileAsStringArray(ClassLoader classLoader, String path) throws IOException {
+		String file = loadFile(classLoader, path);
+		return file.split("\r\n");
 	}
 }
