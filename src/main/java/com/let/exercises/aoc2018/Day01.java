@@ -1,9 +1,7 @@
 package com.let.exercises.aoc2018;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import com.let.exercises.utils.FileAccess;
@@ -11,7 +9,7 @@ import com.let.exercises.utils.FileAccess;
 public class Day01 {
 
 	private void calculateFrequency() throws IOException {
-		String file = FileAccess.loadFile(getClass().getClassLoader(), "aoc2018/day01-01.txt");
+		String file = FileAccess.loadFile(getClass().getClassLoader(), "aoc2018/day01.txt");
 		String[] arr = file.split("\r\n");
 
 		int sum = 0;
@@ -22,7 +20,7 @@ public class Day01 {
 	}
 
 	private void calibrateFrequency() throws IOException {
-		String file = FileAccess.loadFile(getClass().getClassLoader(), "aoc2018/day01-02.txt");
+		String file = FileAccess.loadFile(getClass().getClassLoader(), "aoc2018/day01.txt");
 		String[] arr = file.split("\r\n");
 
 		Set<Integer> counter = new HashSet<>();

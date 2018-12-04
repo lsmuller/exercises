@@ -46,8 +46,6 @@ public class Day03 {
 			}
 		}
 
-
-
 		Collection<String> allKeys = allPairs.keySet();
 
 		Map<Boolean, List<String>> partitionedIds = allKeys.stream()
@@ -56,7 +54,6 @@ public class Day03 {
 		List<String> overlappingIds = partitionedIds.get(true);
 		List<String> missingIds = partitionedIds.get(false);
 
-//		List<String> l2 = allKeys.stream().filter(key -> !overlaps.contains(key)).collect(toList());
 
 		System.out.println(overlappingIds.size());
 		System.out.println(missingIds.size());
