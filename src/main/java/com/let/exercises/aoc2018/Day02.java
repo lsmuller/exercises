@@ -9,7 +9,7 @@ import com.let.exercises.utils.FileAccess;
 public class Day02 {
 
 	public void checksum() throws IOException {
-		String file = FileAccess.loadFile(getClass().getClassLoader(), "aoc2018/day02.txt");
+		String file = FileAccess.loadFile(getClass().getClassLoader(), "day02");
 		String[] arr = file.split("\r\n");
 
 		int count2 = 0;

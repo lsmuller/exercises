@@ -15,7 +15,7 @@ import com.let.exercises.utils.FileAccess;
 public class Day03 {
 
 	private void overlaps() throws IOException {
-		String[] arr = FileAccess.loadFileAsStringArray(getClass().getClassLoader(), "aoc2018/day03.txt");
+		String[] arr = FileAccess.loadFileAsStringArray(getClass().getClassLoader(), "day03");
 		Set<String> overlaps = getOverlaps(arr);
 		System.out.println(overlaps.size());
 	}

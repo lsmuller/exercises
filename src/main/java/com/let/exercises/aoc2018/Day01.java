@@ -9,7 +9,7 @@ import com.let.exercises.utils.FileAccess;
 public class Day01 {
 
 	private void calculateFrequency() throws IOException {
-		String file = FileAccess.loadFile(getClass().getClassLoader(), "aoc2018/day01.txt");
+		String file = FileAccess.loadFile(getClass().getClassLoader(), "day01");
 		String[] arr = file.split("\r\n");
 
 		int sum = 0;
@@ -20,7 +20,7 @@ public class Day01 {
 	}
 
 	private void calibrateFrequency() throws IOException {
-		String file = FileAccess.loadFile(getClass().getClassLoader(), "aoc2018/day01.txt");
+		String file = FileAccess.loadFile(getClass().getClassLoader(), "day01");
 		String[] arr = file.split("\r\n");
 
 		Set<Integer> counter = new HashSet<>();
