@@ -28,10 +28,11 @@ public class Day05 {
 		return !cur.equals(next) && cur.equalsIgnoreCase(next);
 	}
 
-	private static int polymerReactionSize(String input){
+	private static int polymerReactionSize(String input) {
 		int curPos = 0;
 		for (int i = 1; i < input.length(); i++) {
-			if (i <= curPos) continue;
+			if (i <= curPos)
+				continue;
 			Character cur = input.charAt(curPos);
 			Character next = input.charAt(i);
 			if (reacts(cur.toString(), next.toString())) {
@@ -56,7 +57,7 @@ public class Day05 {
 		for (Character character : charSet) {
 			sb.append(character);
 		}
-		return  sb.toString().split("");
+		return sb.toString().split("");
 	}
 
 }
