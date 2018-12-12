@@ -16,24 +16,13 @@ public class Day06 {
 
 	public static void main(String args[]) throws IOException {
 		List<String> inputs = loadFileAsList(Day05.class.getClassLoader(), "day06");
-		CoordEntry[][] coordEntries = assembleMatrix(inputs);
-		Set<String> infiniteAreas = determineInfiniteAreas(coordEntries);
-		Map<String, Integer> finiteAreas = new HashMap<>();
-		for (int i = 0; i < coordEntries.length; i++) {
-			for (int j = 0; j < coordEntries[i].length; j++) {
-				if (infiniteAreas.contains(coordEntries[i][j].coord))
-					continue;
-				if (finiteAreas.containsKey(coordEntries[i][j].coord)) {
-					finiteAreas.put(coordEntries[i][j].coord, finiteAreas.get(coordEntries[i][j].coord) + 1);
-				}
-				else {
-					finiteAreas.put(coordEntries[i][j].coord, 1);
-				}
-			}
-		}
 
-		Collection<Integer> areas =  finiteAreas.values();
-		System.out.println(Collections.max(areas));
+		//Part 1
+		CoordEntry[][] coordEntries = assembleMatrix(inputs);
+		System.out.println("Part 1: " + calculateMaxFiniteArea(coordEntries, determineInfiniteAreas(coordEntries)));
+
+		//Part 2
+		System.out.println("Part 2: " + totalManhattanDistance(inputs));
 	}
 
 	private static CoordEntry[][] assembleMatrix(List<String> inputs) {
@@ -43,7 +32,6 @@ public class Day06 {
 		CoordEntry[][] coordEntries = new CoordEntry[maxI][maxJ];
 		for (String input : inputs) {
 			input = input.replace(" ", "");
-
 			String[] xY = input.split(",");
 			for (int i = 0; i < maxI; i++) {
 				for (int j = 0; j < maxJ; j++) {
@@ -67,9 +55,23 @@ public class Day06 {
 		return coordEntries;
 	}
 
-	private static int manhattanDistance(int p1, int p2, int q1, int q2) {
-		//|p1-q1|+|p2-q2|
-		return Math.abs(p1 - q1) + Math.abs(p2 - q2);
+	private static int calculateMaxFiniteArea(CoordEntry[][] coordEntries, Set<String> infiniteAreas) {
+		Map<String, Integer> finiteAreas = new HashMap<>();
+		for (int i = 0; i < coordEntries.length; i++) {
+			for (int j = 0; j < coordEntries[i].length; j++) {
+				if (infiniteAreas.contains(coordEntries[i][j].coord))
+					continue;
+				if (finiteAreas.containsKey(coordEntries[i][j].coord)) {
+					finiteAreas.put(coordEntries[i][j].coord, finiteAreas.get(coordEntries[i][j].coord) + 1);
+				}
+				else {
+					finiteAreas.put(coordEntries[i][j].coord, 1);
+				}
+			}
+		}
+
+		Collection<Integer> areas = finiteAreas.values();
+		return Collections.max(areas);
 	}
 
 	private static Set<String> determineInfiniteAreas(CoordEntry[][] coordEntries) {
@@ -96,6 +98,32 @@ public class Day06 {
 		}
 		return areas;
 	}
+
+	private static int totalManhattanDistance(List<String> inputs) {
+		Set<String> coordinates = new HashSet<>();
+		int maxI = 359;
+		int maxJ = 359;
+		for (int i = 0; i < maxI; i++) {
+			for (int j = 0; j < maxJ; j++) {
+				int totalManhattanDistance = 0;
+				for (String input : inputs) {
+					String[] xY = input.split(", ");
+					totalManhattanDistance += manhattanDistance(i, j, Integer.valueOf(xY[0]), Integer.valueOf(xY[1]));
+				}
+				if (totalManhattanDistance < 10000) {
+					coordinates.add(i + "," + j);
+				}
+			}
+		}
+		return coordinates.size();
+	}
+
+	private static int manhattanDistance(int p1, int p2, int q1, int q2) {
+		//|p1-q1|+|p2-q2|
+		return Math.abs(p1 - q1) + Math.abs(p2 - q2);
+	}
+
+
 
 }
 
