@@ -57,15 +57,15 @@ public class Day06 {
 
 	private static int calculateMaxFiniteArea(CoordEntry[][] coordEntries, Set<String> infiniteAreas) {
 		Map<String, Integer> finiteAreas = new HashMap<>();
-		for (int i = 0; i < coordEntries.length; i++) {
-			for (int j = 0; j < coordEntries[i].length; j++) {
-				if (infiniteAreas.contains(coordEntries[i][j].coord))
+		for (CoordEntry[] coordEntry : coordEntries) {
+			for (int j = 0; j < coordEntry.length; j++) {
+				if (infiniteAreas.contains(coordEntry[j].coord))
 					continue;
-				if (finiteAreas.containsKey(coordEntries[i][j].coord)) {
-					finiteAreas.put(coordEntries[i][j].coord, finiteAreas.get(coordEntries[i][j].coord) + 1);
+				if (finiteAreas.containsKey(coordEntry[j].coord)) {
+					finiteAreas.put(coordEntry[j].coord, finiteAreas.get(coordEntry[j].coord) + 1);
 				}
 				else {
-					finiteAreas.put(coordEntries[i][j].coord, 1);
+					finiteAreas.put(coordEntry[j].coord, 1);
 				}
 			}
 		}
@@ -122,8 +122,6 @@ public class Day06 {
 		//|p1-q1|+|p2-q2|
 		return Math.abs(p1 - q1) + Math.abs(p2 - q2);
 	}
-
-
 
 }
 
